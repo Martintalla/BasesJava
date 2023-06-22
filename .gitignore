@@ -1,0 +1,6 @@
+/.metadata/
+*.bad
+*.jar
+/node_modules
+/bin
+/target 

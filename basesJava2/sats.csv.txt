@@ -1,0 +1,2 @@
+Domaine; Ca_total
+all;566000
