@@ -2,19 +2,13 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>fr.inetum.foration</groupId>
-	<artifactId>jakarta_ee</artifactId>
+	<groupId>fr.inetum.formation</groupId>
+	<artifactId>JeuAleatoire</artifactId>
 	<version>0.0.1</version>
-	<packaging>pom</packaging>
-	<modules>
-		<module>decouverte_servlet</module>
-		<module>servlet_avances</module>
-		<module>decouverteJSP</module>
-		<module>Servlet-jsp-jdbc</module>
-	</modules>
+	<packaging>war</packaging>
 	<properties>
-		<maven.compiler.source>11</maven.compiler.source>
-		<maven.compiler.target>11</maven.compiler.target>
+		<maven.compiler.source>15</maven.compiler.source>
+		<maven.compiler.target>15</maven.compiler.target>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 	</properties>

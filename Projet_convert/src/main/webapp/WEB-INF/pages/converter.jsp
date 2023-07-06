@@ -24,7 +24,7 @@
 		<div class="header">projet converter</div>
 		<div class="monForm shadow mt-5">
 			<div class="titre bg-primary">Converter Form</div>
-			<form method="get">
+			<form method="post">
 				<div class="mb-3">
 					<label for="login" class="form-label">Température</label> <input
 						type="tempareture" class="form-control" id="celsius" name =celsuis
@@ -36,6 +36,20 @@
 				</div>
 			</form>
 		</div>
+	 	<%
+			Double resultat = (Double) request.getAttribute("resultat");
+			if(resultat != null){
+		%>
+				<div class="resultat alert alert-succes">${resultat } °F </div>
+		<% 	}%>
+		
+		<%
+
+			String erreur = (String) request.getAttribute("erreur");
+			if(erreur != null){
+		%>
+			<div class="error alert alert-danger">${erreur } </div>
+		<%} %> 
 	</div>
 </body>
 </html>

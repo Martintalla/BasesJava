@@ -24,10 +24,12 @@ public class LoginServlet extends HttpServlet {
 		String email = request.getParameter("email");
 		String mdp = request.getParameter("mdp");
 		
-		if (email.equals("stagiaire@inetum.fr")&& mdp.equals("1234")) {
+		if (email.equalsIgnoreCase("stagiaire@inetum.fr")&& mdp.equals("1234")) {
 			//request.getRequestDispatcher("/WEB-INF/pages/converter.jsp").forward(request, response);
 			response.sendRedirect("converter");
-			//User user =new User();
+			//User user =new User(email, mdp);
+			//request.getSession().getAttribute
+			//
 		}
 		else response.sendRedirect("login");
 	}
