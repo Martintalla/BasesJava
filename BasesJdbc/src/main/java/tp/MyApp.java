@@ -1,6 +1,6 @@
 package tp;
 
-import java.text.DateFormat;
+import java.lang.reflect.Field;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -17,9 +17,26 @@ public class MyApp {
 		//test_etablirConnectionJdbc();
 		//testCrudJdbc();
 		//testEnum();
-		 testDate();
+		// testDate();
+		testIntrospection();
 
 	}
+
+	public static void testIntrospection() {
+		try {
+			Class<?> c = Class.forName("tp.Entity.Personne");
+			Field[] fields  = c.getDeclaredFields();
+			System.out.println("liste attributs:");
+			for(Field f : fields) {
+				System.out.println("\t" + f.getName() + " de type=" + f.getType().getSimpleName());
+			}
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+    }
+		
+	
+	
 public static void testDate() {
 	Date date = new Date(); 
 	//System.out.println("data (aujourd'hui)=" + date);
@@ -39,6 +56,7 @@ public static void testEnum() {
 	
 	//V2 (de type enum)
 	//p1.setNationalite(Personne.Nationalite.FRANCAIS);
+	System.out.println("nationalite par défaut "+p1.getNationalite());
 	p1.setNationalite(Personne.Nationalite.INDIEN);
 	//System.out.println("nationalite par défaut "+);
 	System.out.println("nationalite de p1 "+p1.getNationalite());
