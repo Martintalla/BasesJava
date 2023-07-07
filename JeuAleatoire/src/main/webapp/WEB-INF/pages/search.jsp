@@ -18,7 +18,7 @@
 			<form method="post">
 				<div class="mb-3">
 					<label for="login" class="form-label">Entrer un nombre compris entre 1 et 10</label> <input
-						type="int" class="form-control" id="login" name="userRandomNum"
+						type="number" class="form-control" id="login" name="userRandomNum"
 						placeholder="Saisir un chiffre">
 				</div>
 				<div>
@@ -27,7 +27,7 @@
 				</div>
 			</form>
 		</div>
-		<div> Nombre de tentatives ${tentatives } fois</div>
+		<div> Nombre de tentatives ${tentatives} fois</div>
 		<div> ${resultat }</div>
 	</div>
 </body>

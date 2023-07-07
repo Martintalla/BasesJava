@@ -11,6 +11,8 @@
 		<module>servlet_avances</module>
 		<module>decouverteJSP</module>
 		<module>Servlet-jsp-jdbc</module>
+		<module>decouverteJdbc</module>
+		<module>crud_servlet_jso_jdbc</module>
 	</modules>
 	<properties>
 		<maven.compiler.source>11</maven.compiler.source>
