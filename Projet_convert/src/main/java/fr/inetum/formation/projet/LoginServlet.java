@@ -28,8 +28,9 @@ public class LoginServlet extends HttpServlet {
 			//request.getRequestDispatcher("/WEB-INF/pages/converter.jsp").forward(request, response);
 			response.sendRedirect("converter");
 			//User user =new User(email, mdp);
-			//request.getSession().getAttribute
+			//request.getSession().getAttribute("user",user)
 			//
+			response.sendRedirect("converter");
 		}
 		else response.sendRedirect("login");
 	}
