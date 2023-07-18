@@ -2,34 +2,33 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>fr.inetum.foration</groupId>
+	<groupId>fr.inetum.formation</groupId>
 	<artifactId>jakarta_ee</artifactId>
 	<version>0.0.1</version>
 	<packaging>pom</packaging>
 	<modules>
 		<module>decouverte_servlet</module>
-		<module>servlet_avances</module>
-		<module>decouverteJSP</module>
-		<module>Servlet-jsp-jdbc</module>
-		<module>decouverteJdbc</module>
-		<module>crud_servlet_jso_jdbc</module>
+		<module>servlet_avancee</module>
+		<module>decouverte_jsp</module>
+		<module>decouverte_jdbc</module>
+		<module>crud_servlet_jsp_jdbc</module>
 	</modules>
-	<properties>
-		<maven.compiler.source>11</maven.compiler.source>
-		<maven.compiler.target>11</maven.compiler.target>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-	</properties>
+	
 	<dependencies>
-		<!--
-		https://mvnrepository.com/artifact/jakarta.platform/jakarta.jakartaee-web-api -->
+		<!-- DEPENDANCES DE JAKARTAEE -->
 		<dependency>
 			<groupId>jakarta.platform</groupId>
 			<artifactId>jakarta.jakartaee-web-api</artifactId>
 			<version>9.0.0</version>
 			<scope>provided</scope>
 		</dependency>
+		<dependency>
+			<groupId>org.glassfish.web</groupId>
+			<artifactId>jakarta.servlet.jsp.jstl</artifactId>
+			<version>2.0.0</version>
+		</dependency>
 	</dependencies>
+
 	<build>
 		<plugins>
 			<plugin>
@@ -39,4 +38,11 @@
 			</plugin>
 		</plugins>
 	</build>
+		
+	<properties>
+		<maven.compiler.source>17</maven.compiler.source>
+		<maven.compiler.target>17</maven.compiler.target>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+	</properties>
 </project>

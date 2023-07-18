@@ -1,0 +1,7 @@
+fr\inetum\formation\jdbc\TestSimpleDataSouce.class
+fr\inetum\formation\jdbc\TestConnexionWithPropertiesFile.class
+fr\inetum\formation\jdbc\utils\SimpleDataSource.class
+fr\inetum\formation\jdbc\TestConnexion.class
+fr\inetum\formation\jdbc\utils\MaConnexion.class
+fr\inetum\formation\jdbc\TestMaConnexion.class
+fr\inetum\formation\jdbc\TestConnexionAutoCloseable.class

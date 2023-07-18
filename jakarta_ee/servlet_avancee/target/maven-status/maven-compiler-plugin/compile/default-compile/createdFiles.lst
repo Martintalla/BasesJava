@@ -1,0 +1,3 @@
+fr\inetum\servlets\MaServlet.class
+fr\inetum\filters\MonFiltre.class
+fr\inetum\servlets\DeuxiemeServlet.class
