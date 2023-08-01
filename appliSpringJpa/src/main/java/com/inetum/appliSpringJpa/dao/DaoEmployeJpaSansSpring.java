@@ -4,9 +4,10 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 
+import com.inetum.aplliSprinJpa.dao.interfaces.IDaoEmploye;
 import com.inetum.appliSpringJpa.entity.Employe;
 
-public class DaoEmployeJpaSansSpring implements DaoEmploye {
+public class DaoEmployeJpaSansSpring implements IDaoEmploye {
 
 	private EntityManager entityManager;
 

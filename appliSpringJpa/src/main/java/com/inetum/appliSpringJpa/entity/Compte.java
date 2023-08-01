@@ -1,36 +1,86 @@
 package com.inetum.appliSpringJpa.entity;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
+// bientot import jakarta.persistence.Entity;
 
 @Entity
+@NamedQuery(name = "Compte.findAll", query = "SELECT c FROM Compte c")
+@NamedQuery(name = "Compte.findBySoldeMini", query = "SELECT c FROM Compte c WHERE c.solde>= ?1")
+@NamedQuery(name = "Compte.findBySoldeMaxi", query = "SELECT c FROM Compte c WHERE c.solde<= ?1")
+@NamedQuery(name = "Compte.findCompteWithOperationsById", query = "SELECT c FROM Compte c LEFT JOIN FETCH c.operations op WHERE c.numero = ?1")
+@NamedQuery(name = "Compte.findComptesOfClient", query = "SELECT c FROM Compte c WHERE c.client.numero = ?1")
 public class Compte {
-	
-	private Long id;
+
+	/*
+	 * NB: dans une query JPQL le mot clef fetch permet de remonter tous les
+	 * éléments de la collection en mémoire (un peu comme un "eager" sur demande)
+	 */
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	// @GeneratedValue(strategy = GenerationType.SEQUENCE)
+	private Long numero;
+
 	private String label;
+
 	private Double solde;
-	
-	//Constructeurs
-	
-	public Compte() {
-		super();
-		
+
+	//@OneToMany(fetch = FetchType.LAZY, mappedBy = "compte", cascade = CascadeType.ALL)
+	 @OneToMany(fetch = FetchType.EAGER, mappedBy = "compte")
+	private List<Operation> operations; // +get/set
+
+	public void addOperation(Operation op) {
+		if (this.operations == null)
+			this.operations = new ArrayList<>();
+		this.operations.add(op);
 	}
 
-	public Compte(Long id, String label, Double solde) {
+	/*
+	 * @ManyToOne()
+	 * 
+	 * @JoinColumn(name = "numero_client") private Client client;//+get/set
+	 */
+
+	@ManyToMany
+	@JoinTable(name = "Compte_Client", joinColumns = { @JoinColumn(name = "num_compte") }, inverseJoinColumns = {
+			@JoinColumn(name = "num_client") })
+	private List<Client> clients; // +get/set
+
+	public Compte(Long numero, String label, Double solde) {
 		super();
-		this.id = id;
+		this.numero = numero;
 		this.label = label;
 		this.solde = solde;
 	}
 
-	
-	//Getters et setters
-	public Long getId() {
-		return id;
+	public Compte() {
+		super();
 	}
 
-	public void setId(Long id) {
-		this.id = id;
+	@Override
+	public String toString() {
+		return "Compte [numero=" + numero + ", label=" + label + ", solde=" + solde + "]";
+	}
+
+	public Long getNumero() {
+		return numero;
+	}
+
+	public void setNumero(Long numero) {
+		this.numero = numero;
 	}
 
 	public String getLabel() {
@@ -49,14 +99,20 @@ public class Compte {
 		this.solde = solde;
 	}
 
-	@Override
-	public String toString() {
-		return "Compte [id=" + id + ", label=" + label + ", solde=" + solde + "]";
+	public List<Operation> getOperations() {
+		return operations;
 	}
-	
-	
-	
-	
-	
+
+	public void setOperations(List<Operation> operations) {
+		this.operations = operations;
+	}
+
+	public List<Client> getClients() {
+		return clients;
+	}
+
+	public void setClients(List<Client> clients) {
+		this.clients = clients;
+	}
 
 }

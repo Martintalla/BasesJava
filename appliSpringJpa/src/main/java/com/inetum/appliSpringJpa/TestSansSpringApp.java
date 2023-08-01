@@ -7,7 +7,9 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
+import com.inetum.appliSpringJpa.dao.DaoCompteJpaSansSpring;
 import com.inetum.appliSpringJpa.dao.DaoEmployeJpaSansSpring;
+import com.inetum.appliSpringJpa.entity.Compte;
 import com.inetum.appliSpringJpa.entity.Employe;
 
 // classe de démarrage de l'application (sans utiliser spring)
@@ -21,7 +23,7 @@ public class TestSansSpringApp {
 		EntityManager entityManager = emf.createEntityManager();
 
 		testDaoEmploye(entityManager);
-		testDaoCompte(entityManager);
+		//testDaoCompte(entityManager);
 
 		entityManager.close();
 		emf.close();
@@ -73,6 +75,16 @@ public class TestSansSpringApp {
 	}
 
 	public static void testDaoCompte(EntityManager entityManager) {
+		DaoCompteJpaSansSpring daoCompteJpa = new DaoCompteJpaSansSpring();
+		daoCompteJpa.setEntityManager(entityManager);
+		
+		daoCompteJpa.insert(new Compte(null,"compte1" , 2000.0));
+		daoCompteJpa.insert(new Compte(null,"compte2" , 500.0));
+		daoCompteJpa.insert(new Compte(null,"compte3" , 50.));
+		daoCompteJpa.insert(new Compte(null,"compte4" , 200.));
+		List<Compte> compteAvecSoldeMini500 = daoCompteJpa.findBySoldeMini(500);
+		for (Compte comp :compteAvecSoldeMini500)
+		System.err.println("Les empoyees ayant un compte mininal de ="+comp);
 
 	}
 

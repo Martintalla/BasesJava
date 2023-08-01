@@ -1,4 +1,4 @@
-package com.inetum.appliSpringJpa.dao;
+package com.inetum.aplliSprinJpa.dao.interfaces;
 
 import java.util.List;
 
@@ -10,7 +10,7 @@ import com.inetum.appliSpringJpa.entity.Employe;
  * Avec la méthod CRUD
  */
 
-public interface DaoEmploye {
+public interface IDaoEmploye {
 	Employe findById(Long numero);
 	List<Employe> findAll();
 	List<Employe> findByPrenom(String prenom);
